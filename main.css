@@ -1,0 +1,233 @@
+:root{
+   --cajaWidth:35px; 
+}
+
+*{
+    box-sizing: border-box;
+
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(228, 228, 228) ;
+}
+.main{
+  text-align: center;
+}
+
+.content-form{
+    position: relative;
+    background: rgba(128, 127, 127, 0.5);
+    padding: 20px;
+    max-width: 500px;
+    margin: 12px auto;
+    border-radius: 5px;    
+}
+#Controles {
+  padding-top: 15px;
+}
+#Controles > label{
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;    
+}
+#acciones{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    
+}
+.icono{
+    font-size: 25px;
+    cursor: pointer;
+    transition-duration: 450ms;    
+
+    &.run{
+        color: rgb(0, 11, 167);        
+    }
+    &.PasoPaso{
+        color: rgb(0, 119, 46);        
+    }    
+    &.parar{
+        color: rgb(192, 54, 0) ;        
+    }
+    &.run:hover,&.PasoPaso:hover,&.parar:hover{
+      filter: drop-shadow(1px 1px 2px rgb(0, 0, 0) );
+    }
+    &.run:hover::after,&.PasoPaso:hover::after,&.parar:hover::after{
+        content: attr(data-text);
+        color: white;
+        display: flex;
+        font-size: 12px;
+        position: absolute;
+        width: 300%;
+        height: 20px;
+        background: rgb(12, 12, 12, 0.8);
+        left: -100%;
+        top: 30px;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    &.run:hover::before,&.PasoPaso:hover::before,&.parar:hover::before{
+        content: "";
+        position: absolute;
+        left: calc( 50% - 15px );
+        top: 10px;        
+        border: 12px solid;
+        /*border-color: red cyan #000000 blue;*/
+        border-color: transparent transparent rgb(12,12,12,0.8) transparent;
+    }
+    
+}
+input[type="button"]{
+    background: blue ;
+    border: 0px;
+    padding: 5px 10px ;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="txt"]{
+    outline: none ;
+    border: 0px;
+    height: 25px;
+    border-radius: 3px;
+    padding: 0px 10px;
+}
+.vector{
+    background: rgb(169, 141, 245) ;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    padding:10px 0px ;
+    width: 80%;
+    margin: auto;
+}
+.box{
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: rgb(140, 5, 194);
+    width: var(--cajaWidth);
+    height: var(--cajaWidth);
+    margin: 2px;
+    color: white;
+    border-radius: 5px;    
+    transition-duration: 1s;
+    transition-property: all;
+    top:0px; 
+    left: 0px;
+}
+
+.topLeftTop{    
+    animation: cambio 850ms linear forwards; 
+}
+@keyframes cambio {
+    0%{
+        box-shadow: 1px 1px 2px rgb(29, 28, 28) ;
+    }
+    33%{
+        left: 0px;
+        top:50px; 
+    }
+    66%{
+        left:calc( var(--cajaWidth) + 7px );
+        top:50px;  
+    }
+    100%{
+        left:calc( var(--cajaWidth) + 7px );
+        top:0px;  
+    }
+}
+.left{
+    animation: recorrerIzquierda 850ms linear forwards;    
+}
+@keyframes recorrerIzquierda {
+    0%{
+        box-shadow: 1px 1px 2px rgb(29, 28, 28) ;
+    }
+    100%{
+        left:-45px;
+    }
+}
+
+
+.topRightTop{
+    animation: cambioRight 850ms linear forwards;
+}
+@keyframes cambioRight {
+    0%{
+        box-shadow: 1px 1px 2px rgb(29, 28, 28) ;
+    }
+    33%{
+        left: 0px;
+        top:50px; 
+    }
+    66%{
+        left:calc( 0px - var(--cajaWidth) - 7px );
+        top:50px;  
+    }
+    100%{
+        left:calc( 0px - var(--cajaWidth) - 7px );
+        top:0px;  
+    }
+}
+.Right{
+    animation: recorrerDerecha 850ms linear forwards;    
+}
+
+@keyframes recorrerDerecha {
+    0%{
+        box-shadow: 1px 1px 2px rgb(29, 28, 28) ;
+    }
+    100%{
+        left:45px;
+    }
+}
+
+.blue{
+    background: blue;
+}
+form{
+    margin: 20px 0px;
+}
+
+#msgErroresFrom{
+    opacity: 0;
+    position: absolute;
+    background: red;
+    color: white;
+    
+    border-radius:5px; 
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);    
+    transition-duration: 500ms ;
+    &.errorShow{
+        opacity: 1;
+        width: auto;
+        padding: 5px 10px ;
+    }
+}
+
+#flecha{
+    position: absolute;
+    top: calc( var(--cajaWidth) + 10px ); 
+    font-weight: bold;
+    opacity: 0;
+}
+
+
+.selectBox{
+    border: 2px solid rgb(22, 21, 22) ;
+    background: green;    
+ }
+ .selectBox>#flecha{
+    color: rgb(79, 160, 110);
+    opacity: 1;
+ }
